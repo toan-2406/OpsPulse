@@ -4,7 +4,8 @@ type Health = { status: 'ok'; service: string; time: string }
 
 export default function App() {
   const [health, setHealth] = useState<Health | null>(null)
-  const api = import.meta.env.VITE_API_URL || 'http://localhost:3001'
+  // When exposed via Tailscale subpath proxy, prefer a relative URL (same origin)
+  const api = import.meta.env.VITE_API_URL || '/opspulse/api'
 
   useEffect(() => {
     fetch(`${api}/health`).then(r => r.json()).then(setHealth).catch(() => setHealth(null))

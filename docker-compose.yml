@@ -1,0 +1,36 @@
+services:
+  mongo:
+    image: mongo:4.4
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  api:
+    build:
+      context: .
+      dockerfile: ./apps/api/Dockerfile
+    environment:
+      - PORT=3001
+      - MONGODB_URI=mongodb://mongo:27017/opspulse
+      - JWT_SECRET=change_me
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongo
+
+  web:
+    build:
+      context: .
+      dockerfile: ./apps/web/Dockerfile
+    environment:
+      # IMPORTANT: for tailnet subpath proxying, browser must call the same host.
+      # We'll set this to a relative path and rely on Vite to pick it up at build time.
+      - VITE_API_URL=/opspulse/api
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api
+
+volumes:
+  mongo_data:

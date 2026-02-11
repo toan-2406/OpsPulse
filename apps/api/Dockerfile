@@ -6,4 +6,6 @@ COPY apps/api ./apps/api
 RUN npm i -g pnpm@10.28.2
 RUN pnpm install
 EXPOSE 3001
-CMD ["pnpm","--filter","api","dev"]
+# Run compiled output in container (dev-watch expects dist/ to exist)
+RUN pnpm --filter api build
+CMD ["node","apps/api/dist/main.js"]
