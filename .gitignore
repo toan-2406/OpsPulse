@@ -1,0 +1,14 @@
+node_modules
+**/node_modules
+dist
+build
+coverage
+.playwright
+apps/mobile/.expo
+apps/mobile/.expo-shared
+apps/mobile/web-build
+.env
+.env.*
+!.env.example
+.DS_Store
+.turbo

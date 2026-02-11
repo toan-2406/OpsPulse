@@ -1,14 +1,19 @@
 {
-  "name": "opspulse-monorepo",
-  "version": "1.0.0",
-  "description": "A mini incident + runbook + audit log system monorepo",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo "Error: no test specified" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "name": "opspulse",
+  "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@9.0.4"
+  "packageManager": "pnpm@10.28.2",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "test": "turbo test",
+    "test:e2e": "pnpm --filter web test:e2e"
+  },
+  "devDependencies": {
+    "eslint": "^9.17.0",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.3"
+  }
 }
