@@ -1,0 +1,14 @@
+{
+  "name": "opspulse-monorepo",
+  "version": "1.0.0",
+  "description": "A mini incident + runbook + audit log system monorepo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo "Error: no test specified" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "private": true,
+  "packageManager": "pnpm@9.0.4"
+}
